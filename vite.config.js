@@ -4,9 +4,9 @@ import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // GitHub Pages 项目页部署路径：https://xinyuez253-hue.github.io/chenchen-zhou-website/
-  // 若以后改用 用户名.github.io 用户主页仓库，可改回 '/'
-  base: '/chenchen-zhou-website/',
+  // 部署在用户主页仓库 Zhouchenchen161.github.io，根路径部署，base 保持 '/'
+  // 若以后改用项目页仓库（如 用户名.github.io/仓库名），需改为 '/仓库名/'
+  base: '/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
