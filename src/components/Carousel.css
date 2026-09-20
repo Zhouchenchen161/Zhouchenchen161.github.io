@@ -1,0 +1,191 @@
+/* ============ Carousel.css（卡片式介绍轮播） ============ */
+.ccarousel {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto 60px;
+  overflow: hidden;
+}
+
+.ccarousel-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.ccarousel-slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ccarousel-card {
+  width: 100%;
+  max-width: 760px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ccarousel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+  border-color: #c41e3a;
+}
+
+/* 图片区：正方形/矩形都完整显示、不裁切 */
+.ccarousel-img {
+  height: 440px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.ccarousel-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* 文字在图片下方，不压图 */
+.ccarousel-caption {
+  padding: 20px 28px 26px;
+  text-align: left;
+}
+
+.ccarousel-caption h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  color: #1a1a1a;
+}
+
+.ccarousel-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* 左右箭头 */
+.ccarousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, color 0.2s;
+  z-index: 2;
+}
+.ccarousel-prev { left: 0; }
+.ccarousel-next { right: 0; }
+.ccarousel-btn:hover {
+  background: #c41e3a;
+  color: #fff;
+}
+
+/* 底部圆点 */
+.ccarousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+.ccarousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
+}
+.ccarousel-dot.active {
+  background: #c41e3a;
+  transform: scale(1.25);
+}
+
+/* 手机端适配 */
+@media (max-width: 640px) {
+  .ccarousel-img { height: 300px; }
+  .ccarousel-card { max-width: 100%; }
+}
+/* ============ 灯箱：点击放大 ============ */
+.ccarousel-img {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.ccarousel-zoom {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ccarousel-img:hover .ccarousel-zoom {
+  opacity: 1;
+}
+
+.ccarousel-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  animation: ccarousel-fade 0.2s ease;
+}
+
+.ccarousel-lightbox img {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.ccarousel-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ccarousel-close:hover {
+  background: #c41e3a;
+}
+
+@keyframes ccarousel-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,87 @@
+import { useState, useEffect } from 'react'
+
+function Carousel() {
+  const base = import.meta.env.BASE_URL
+
+  const slides = [
+    {
+      img: `${base}papers/paper1.jpg`,
+      title: 'Microparticles by microfluidic lithography',
+      journal: 'Materials Today, 2023',
+    },
+    {
+      img: `${base}papers/paper2.jpg`,
+      title: 'One-pot microfluidic fabrication of micro ceramic particles',
+      journal: 'Nature Communications, 2024',
+    },
+    {
+      img: `${base}papers/paper3.jpg`,
+      title: 'Multifunctional Material Building Blocks from Plant Pollen',
+      journal: 'Annual Review of Chemical and Biomolecular Engineering, 2024',
+    },
+    {
+      img: `${base}papers/paper4.jpg`,
+      title: 'Microfluidic assembly of micro-blocks into interlocked structures for enhanced strength and toughness',
+      journal: 'ACS Applied Materials & Interfaces, 2022',
+    },
+    {
+      img: `${base}papers/paper5.jpg`,
+      title: 'Sharp-edged 3D microparticles fabrication in folded PDMS microchannels',
+      journal: 'Lab on a Chip, 2021',
+    },
+  ]
+
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [slides.length])
+
+  const prevSlide = () => {
+    setCurrent(current === 0 ? slides.length - 1 : current - 1)
+  }
+
+  const nextSlide = () => {
+    setCurrent(current === slides.length - 1 ? 0 : current + 1)
+  }
+
+  return (
+    <section className="carousel">
+      <button className="arrow left" onClick={prevSlide}>
+        ❮
+      </button>
+
+      <div className="slide-paper">
+        <img
+          src={slides[current].img}
+          alt={slides[current].title}
+          className="slide-image"
+        />
+        <div className="paper-info">
+          <p className="paper-title">{slides[current].title}</p>
+          <p className="paper-journal">{slides[current].journal}</p>
+        </div>
+      </div>
+
+      <button className="arrow right" onClick={nextSlide}>
+        ❯
+      </button>
+
+      <div className="dots">
+        {slides.map((_, index) => (
+          <span
+            key={index}
+            className={current === index ? 'dot active' : 'dot'}
+            onClick={() => setCurrent(index)}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+export default Carousel

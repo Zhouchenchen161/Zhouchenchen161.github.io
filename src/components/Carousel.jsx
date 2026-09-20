@@ -1,60 +1,133 @@
-import { useState, useEffect } from 'react'
+// ============ Carousel.jsx（介绍轮播 · 卡片式 · 点击放大） ============
+import { useEffect, useRef, useState } from "react";
+import "./Carousel.css";
 
-import slide1 from '../assets/1.LOTR.png'
-import slide2 from '../assets/2.HP.png'
-import slide3 from '../assets/3.LOTR.png'
-import slide4 from '../assets/4.HP.png'
+// 三张图：intro1 微纳成形制造/光刻 · intro2 我们的工作 · intro3 硬质微粒的微纳成形制造
+const slides = [
+  {
+    img: "/intro/intro1.jpg", // 正方形
+    title: "Micro/Nano Forming Manufacturing & Lithography",
+    text: "Our research focuses on micro/nano forming manufacturing and advanced lithography, pushing the precision limits of micro fabrication.",
+  },
+  {
+    img: "/intro/intro2.jpg", // 矩形
+    title: "Our Work",
+    text: "We develop high-precision micro/nano manufacturing methods and processes, connecting fundamental research to practical engineering applications.",
+  },
+  {
+    img: "/intro/intro3.jpg", // 矩形
+    title: "Micro/Nano Forming of Hard Particles",
+    text: "We study the micro/nano forming manufacturing of hard particles, enabling precise shaping and assembly at the micro scale.",
+  },
+];
 
-function Carousel() {
-  const slides = [slide1, slide2, slide3, slide4]
+const AUTOPLAY_MS = 8000; // 自动播放 8 秒；改成 0 则只手动切换
 
-  const [current, setCurrent] = useState(0)
+export default function Carousel() {
+  const [index, setIndex] = useState(0);
+  const [lightbox, setLightbox] = useState(null); // null = 关闭；= 图片地址 = 打开
+  const timerRef = useRef(null);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    if (AUTOPLAY_MS > 0) {
+      timerRef.current = setInterval(() => {
+        setIndex((i) => (i + 1) % slides.length);
+      }, AUTOPLAY_MS);
+    }
+  };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) =>
-        prev === slides.length - 1 ? 0 : prev + 1
-      )
-    }, 5000)
+    startTimer();
+    return () => clearInterval(timerRef.current);
+    // eslint-disable-next-line
+  }, []);
 
-    return () => clearInterval(timer)
-  }, [slides.length])
+  // 灯箱打开期间暂停自动播放；按 Esc 关闭灯箱
+  useEffect(() => {
+    if (lightbox) {
+      clearInterval(timerRef.current);
+      const onKey = (e) => {
+        if (e.key === "Escape") setLightbox(null);
+      };
+      window.addEventListener("keydown", onKey);
+      return () => window.removeEventListener("keydown", onKey);
+    } else {
+      startTimer();
+    }
+    // eslint-disable-next-line
+  }, [lightbox]);
 
-  const prevSlide = () => {
-    setCurrent(current === 0 ? slides.length - 1 : current - 1)
-  }
-
-  const nextSlide = () => {
-    setCurrent(current === slides.length - 1 ? 0 : current + 1)
-  }
+  const go = (i) =>
+    setIndex(((i % slides.length) + slides.length) % slides.length);
 
   return (
-    <section className="carousel">
-      <button className="arrow left" onClick={prevSlide}>
-        ❮
-      </button>
+    <>
+      <section
+        className="ccarousel"
+        onMouseEnter={() => clearInterval(timerRef.current)}
+        onMouseLeave={startTimer}
+      >
+        <div
+          className="ccarousel-track"
+          style={{ transform: "translateX(-" + index * 100 + "%)" }}
+        >
+          {slides.map((s, i) => (
+            <div className="ccarousel-slide" key={i}>
+              <article className="ccarousel-card">
+                <div className="ccarousel-img" onClick={() => setLightbox(s.img)}>
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    loading={i === 0 ? "eager" : "lazy"}
+                  />
+                  <span className="ccarousel-zoom">⛶ Click to enlarge</span>
+                </div>
+                <div className="ccarousel-caption">
+                  <h3>{s.title}</h3>
+                  <p className="ccarousel-text">{s.text}</p>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
 
-      <img
-        src={slides[current]}
-        alt={`Slide ${current + 1}`}
-        className="slide-image"
-      />
+        <button
+          className="ccarousel-btn ccarousel-prev"
+          onClick={() => go(index - 1)}
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+        <button
+          className="ccarousel-btn ccarousel-next"
+          onClick={() => go(index + 1)}
+          aria-label="Next"
+        >
+          ›
+        </button>
 
-      <button className="arrow right" onClick={nextSlide}>
-        ❯
-      </button>
+        <div className="ccarousel-dots">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              className={"ccarousel-dot" + (i === index ? " active" : "")}
+              onClick={() => go(i)}
+              aria-label={"Slide " + (i + 1)}
+            />
+          ))}
+        </div>
+      </section>
 
-      <div className="dots">
-        {slides.map((_, index) => (
-          <span
-            key={index}
-            className={current === index ? 'dot active' : 'dot'}
-            onClick={() => setCurrent(index)}
-          />
-        ))}
-      </div>
-    </section>
-  )
+      {/* 灯箱：点图片放大 */}
+      {lightbox && (
+        <div className="ccarousel-lightbox" onClick={() => setLightbox(null)}>
+          <img src={lightbox} alt="Enlarged" />
+          <button className="ccarousel-close" onClick={() => setLightbox(null)}>
+            ✕
+          </button>
+        </div>
+      )}
+    </>
+  );
 }
-
-export default Carousel

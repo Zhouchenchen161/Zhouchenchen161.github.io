@@ -18,9 +18,11 @@ function MobileMenu({ menuOpen, setMenuOpen, openPage }) {
 
         <nav>
           <button onClick={() => openPage('home')}>Home</button>
+          <button onClick={() => openPage('about')}>About</button>
           <button onClick={() => openPage('research')}>Research</button>
           <button onClick={() => openPage('people')}>People</button>
           <button onClick={() => openPage('publications')}>Publications</button>
+          <button onClick={() => openPage('news')}>News</button>
           <button onClick={() => openPage('gallery')}>Gallery</button>
           <button onClick={() => openPage('positions')}>Open Positions</button>
           <button onClick={() => openPage('contact')}>Contact</button>
