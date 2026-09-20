@@ -2,20 +2,22 @@
 import { useEffect, useRef, useState } from "react";
 import "./Carousel.css";
 
+const base = import.meta.env.BASE_URL;
+
 // 三张图：intro1 微纳成形制造/光刻 · intro2 我们的工作 · intro3 硬质微粒的微纳成形制造
 const slides = [
   {
-    img: "/intro/intro1.jpg", // 正方形
+    img: `${base}intro/intro1.jpg`, // 正方形
     title: "Micro/Nano Forming Manufacturing & Lithography",
     text: "Our research focuses on micro/nano forming manufacturing and advanced lithography, pushing the precision limits of micro fabrication.",
   },
   {
-    img: "/intro/intro2.jpg", // 矩形
+    img: `${base}intro/intro2.jpg`, // 矩形
     title: "Our Work",
     text: "We develop high-precision micro/nano manufacturing methods and processes, connecting fundamental research to practical engineering applications.",
   },
   {
-    img: "/intro/intro3.jpg", // 矩形
+    img: `${base}intro/intro3.jpg`, // 矩形
     title: "Micro/Nano Forming of Hard Particles",
     text: "We study the micro/nano forming manufacturing of hard particles, enabling precise shaping and assembly at the micro scale.",
   },

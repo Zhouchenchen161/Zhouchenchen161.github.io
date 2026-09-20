@@ -215,7 +215,7 @@ function App() {
           <div className="people-grid">
             {people[peopleTab].map((p) => (
               <div className="person-card" key={p.name}>
-                <img src={p.img} alt={p.name} className="person-avatar" />
+                <img src={p.img} alt={p.name} className="person-avatar" loading="lazy" decoding="async" />
                 <h3>{p.name}</h3>
                 {p.cn !== p.name && <p className="person-cn">{p.cn}</p>}
                 <p className="person-role">{p.role}</p>
@@ -405,7 +405,7 @@ function App() {
           <div className="gallery-grid">
             {gallery[galleryTab].map((item) => (
               <figure className="gallery-card" key={item.img}>
-                <img src={base + item.img} alt={item.cap} className="gallery-photo" />
+                <img src={base + item.img} alt={item.cap} className="gallery-photo" loading="lazy" decoding="async" />
                 <figcaption className="gallery-caption">{item.cap}</figcaption>
               </figure>
             ))}
