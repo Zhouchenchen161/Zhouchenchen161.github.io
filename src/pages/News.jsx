@@ -7,6 +7,14 @@ const base = import.meta.env.BASE_URL
 // ★ 图片放 public/news/ 下，命名 news1.jpg news2.jpg ...，与数组顺序对应 ★
 const newsItems = [
   {
+    date: "2026-09-16",
+    type: "Publication",
+    title: "[Brief] Max Lab's Latest Paper Selected as Cover Article by Advanced Energy Materials",
+    desc: "We just received news from the editorial office of Advanced Energy Materials that our group's latest paper has been selected as the journal's cover article.",
+    link: "https://mp.weixin.qq.com/s/1DZkKK9Oh8G3Cy3e2FNrow",
+    img: `${base}news/news4.jpg`,
+  },
+  {
     date: "2026-09",
     type: "Publication",
     title: "Research Progress: From Natural Pollen to Recyclable Energy Devices — Biodegradable Pollen Paper Enables High-Performance Triboelectric Nanogenerators",
