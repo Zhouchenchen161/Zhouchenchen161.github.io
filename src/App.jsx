@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import './App.css'
 import Carousel from './components/Carousel'
@@ -7,16 +7,35 @@ import MobileMenu from './components/MobileMenu'
 import Research from './pages/Research'
 import News from './pages/News'
 
+// 所有合法页面名
+const PAGES = ['home', 'about', 'research', 'people', 'publications', 'news', 'gallery', 'positions', 'contact']
+
+// 从地址栏 #/xxx 读取当前页；读不到或非法就回首页
+const getPageFromHash = () => {
+  const hash = window.location.hash.replace(/^#\/?/, '')
+  return PAGES.includes(hash) ? hash : 'home'
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [page, setPage] = useState('home')
+  const [page, setPage] = useState(getPageFromHash)
   const [peopleTab, setPeopleTab] = useState('phd')
   const [galleryTab, setGalleryTab] = useState('academic')
 
+  // 浏览器前进/后退/直接输入网址时，跟着地址栏切页
+  useEffect(() => {
+    const onHashChange = () => {
+      setPage(getPageFromHash())
+      setMenuOpen(false)
+      window.scrollTo(0, 0)
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  // 点导航 = 改地址栏，切页交给上面的 hashchange 处理
   const openPage = (pageName) => {
-    setPage(pageName)
-    setMenuOpen(false)
-    window.scrollTo(0, 0)
+    window.location.hash = pageName === 'home' ? '/' : '/' + pageName
   }
 
   const base = import.meta.env.BASE_URL
@@ -26,6 +45,7 @@ function App() {
       { name: 'Wenying Zhou', cn: '周文英', role: 'PhD', img: base + 'photos/people/person1.jpg' },
       { name: 'Mo Jun Hao', cn: 'Mo Jun Hao', role: 'PhD · Co-supervised', img: base + 'photos/people/person2.jpg' },
       { name: 'Hanna Kim', cn: 'Hanna Kim', role: 'PhD · Co-supervised', img: base + 'photos/people/person3.jpg' },
+      { name: 'Dingxuan Wang', cn: '王鼎轩', role: 'PhD', img: base + 'photos/people/person11.jpg' },
     ],
     master: [
       { name: 'Xinyue Zhang', cn: '张馨月', role: 'Master · Co-supervised', img: base + 'photos/people/person4.jpg' },
@@ -313,7 +333,7 @@ function App() {
                 <li>C. Zhou, Z. Guo, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.J. Cho*. <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">Recyclable Triboelectric Nanogenerators Enabled by Biodegradable Pollen-Paper Nanoarchitectonics for Sustainable Energy Harvesting</a>. <em>Advanced Energy Materials</em>, 2026.</li>
                 <li>J. Li†, C. Zhou†, J.H. Mo†, M.S. Ibrahim, J. Lee, C.H. Teo, R. Ni, H. Kim, Z. Guo, B.P. Binks, N.-j. Cho*. <a href="https://doi.org/10.1021/acssuschemeng.6c04002" target="_blank" rel="noreferrer">Engineering Tunable Biomimetic Superhydrophobic Surfaces from Natural Spiky Pollen</a>. <em>ACS Sustainable Chemistry &amp; Engineering</em>, 2026.</li>
                 <li>Z. Guo, J. Deng, Y. Xu, C. Zhou, Y. Shao, X. Pu, M. Kim*, N.-j. Cho*. <a href="https://doi.org/10.1002/advs.202521235" target="_blank" rel="noreferrer">A pollen-enhanced bionic mechanoreceptor induced by asymmetric ionic convection in hydrogel for sensory-augmented prostheses</a>. <em>Advanced Science</em>, 13 (2026) 2521235.</li>
-                <li>C. Zhou, H. Kim, J.H. Mo, J.Z. Wong, Z. Guo, R. Ni, P. Kim, M.S. Ibrahim, M.F. Abdullah, S.M. Kwon, X. Zhang, N.-j. Cho*. <a href="https://doi.org/10.1002/adfm.75781" target="_blank" rel="noreferrer">Microcarriers: A Transformative Platform for Advanced Drug Delivery</a>. <em>Advanced Functional Materials</em>, e30114 (2026). Cover.</li>
+                <li>C. Zhou, H. Kim, J.H. Mo, J.Z. Wong, Z. Guo, R. Ni, P. Kim, M.S. Ibrahim, M.F. Abdullah, S.M. Kwon, X. Zhang, N.-j. Cho*. <a href="https://doi.org/10.1002/adfm.75781" target="_blank" rel="noreferrer">Microcarriers: A Transformative Platform for Advanced Drug Delivery</a>. <em>Advanced Functional Materials</em>, e75781 (2026). Cover.</li>
                 <li>R. Ni, Q. Deng, J. Zhang, Q. Ke, C. Zhou*, N.-j. Cho*, Y. Zhao*. <a href="https://doi.org/10.1002/adfm.202530114" target="_blank" rel="noreferrer">Micro/nanoarchitectonics of ethanol-unfolded keratin for dual-function biodegradable nonwovens</a>. <em>Advanced Functional Materials</em>, e30114 (2026).</li>
               </ul>
             </div>

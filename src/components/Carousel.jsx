@@ -4,7 +4,7 @@ import "./Carousel.css";
 
 const base = import.meta.env.BASE_URL;
 
-// 三张图：intro1 微纳成形制造/光刻 · intro2 我们的工作 · intro3 硬质微粒的微纳成形制造
+// 六张图：intro1 微纳成形制造/光刻 · intro2 我们的工作 · intro3 硬质微粒的微纳成形制造 · intro4 角蛋白封面 · intro5 AEM封面 · intro6 微载体封面
 const slides = [
   {
     img: `${base}intro/intro1.jpg`, // 正方形
@@ -20,6 +20,21 @@ const slides = [
     img: `${base}intro/intro3.jpg`, // 矩形
     title: "Micro/Nano Forming of Hard Particles",
     text: "We study the micro/nano forming manufacturing of hard particles, enabling precise shaping and assembly at the micro scale.",
+  },
+  {
+    img: `${base}intro/intro4.jpg`,
+    title: "Cover · Advanced Functional Materials",
+    text: "Our work on micro/nanoarchitectonics of ethanol-unfolded keratin for dual-function biodegradable nonwovens was featured as the Cover of Advanced Functional Materials (2026).",
+  },
+  {
+    img: `${base}intro/intro5.jpg`,
+    title: "Cover · Advanced Energy Materials",
+    text: "Our work on recyclable triboelectric nanogenerators enabled by biodegradable pollen-paper nanoarchitectonics for sustainable energy harvesting was featured as the Cover of Advanced Energy Materials (2026).",
+  },
+  {
+    img: `${base}intro/intro6.jpg`,
+    title: "Cover · Advanced Functional Materials",
+    text: "Our work on microcarriers as a transformative platform for advanced drug delivery was featured as the Cover of Advanced Functional Materials (2026).",
   },
 ];
 
