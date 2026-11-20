@@ -174,9 +174,10 @@ function App() {
             </ol>
           </div>
 
-          <div className="about-section">
+                   <div className="about-section">
             <h2>Other Professional Activities</h2>
             <ul className="position-list">
+              <li><strong>2026 – Present</strong> · Young Editorial Board Member, <em>Nano-Micro Letters</em> · <em>The Innovation</em> · <em>Advanced Bionics</em></li>
               <li><strong>2026 – Present</strong> · Senior Member, Chinese Society of Micro/Nano Technology</li>
               <li><strong>2025 – Present</strong> · Committee Member, Particle Preparation and Processing Committee, Chinese Society of Particuology</li>
               <li>Reviewer for journals including <em>Advanced Materials</em>, <em>Advanced Functional Materials</em>, <em>Applied Materials Today</em>, <em>Heliyon</em>, <em>Scientific Reports</em>, <em>Journal of Nanoparticle Research</em>, etc.</li>
@@ -324,12 +325,14 @@ function App() {
             </article>
           </div>
 
+          <div className="pub-years">
           <h2>Complete Publication Record</h2>
 
-          <div className="pub-years">
             <div className="pub-yeargroup">
               <h3 className="pub-year">2026</h3>
               <ul className="pub-full-list">
+                <li>Z. Guo†, C. Zhou†*, H. Wang, J. Li, J. Deng, Y. Huang, X. Pu*, M. Kim*, N.-j. Cho*. <a href="https://doi.org/10.1002/adfm.79211" target="_blank" rel="noreferrer">Pollen-Derived Paper for Sustainable Droplet Energy Harvesting</a>. <em>Advanced Functional Materials</em>, e79211 (2026).</li>
+                <li>C. Zhou†*, J.H. Mo†, Z. Guo, Y. Xu, H. Kim, J. Li, M.S. Ibrahim, M. Kim, B.P. Binks, N.-j. Cho*. <a href="https://doi.org/10.1002/adma.75433" target="_blank" rel="noreferrer">Pollen-Engraved Dual Porosity Ceramic Beads from Liquid Marbles for Environmental Remediation</a>. <em>Advanced Materials</em>, e75433 (2026). Cover.</li>
                 <li>C. Zhou, Z. Guo, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.J. Cho*. <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">Recyclable Triboelectric Nanogenerators Enabled by Biodegradable Pollen-Paper Nanoarchitectonics for Sustainable Energy Harvesting</a>. <em>Advanced Energy Materials</em>, 2026. Cover.</li>
                 <li>J. Li†, C. Zhou†, J.H. Mo†, M.S. Ibrahim, J. Lee, C.H. Teo, R. Ni, H. Kim, Z. Guo, B.P. Binks, N.-j. Cho*. <a href="https://doi.org/10.1021/acssuschemeng.6c04002" target="_blank" rel="noreferrer">Engineering Tunable Biomimetic Superhydrophobic Surfaces from Natural Spiky Pollen</a>. <em>ACS Sustainable Chemistry &amp; Engineering</em>, 2026.</li>
                 <li>Z. Guo, J. Deng, Y. Xu, C. Zhou, Y. Shao, X. Pu, M. Kim*, N.-j. Cho*. <a href="https://doi.org/10.1002/advs.202521235" target="_blank" rel="noreferrer">A pollen-enhanced bionic mechanoreceptor induced by asymmetric ionic convection in hydrogel for sensory-augmented prostheses</a>. <em>Advanced Science</em>, 13 (2026) 2521235.</li>
