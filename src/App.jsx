@@ -27,7 +27,7 @@ function App() {
   useLayoutEffect(() => {
     const nodes = Array.from(
       document.querySelectorAll(
-        '.sel-card, .pub-full-list li, .about-item, .pub-list li, .position-list li, .person-card, .gallery-card, .news-card, .contact-block p, .hero-text'
+        '.sel-card, .pub-full-list li, .about-item, .pub-list li, .position-list li, .person-card, .gallery-card, .news-card, .contact-block p'
       )
     )
     if (!nodes.length) return
@@ -137,6 +137,13 @@ function App() {
     ],
   }
 
+  const heroStats = [
+    { value: '04', label: 'journal covers in 2026' },
+    { value: '05', label: 'research areas' },
+    { value: '11', label: 'patents & applications' },
+    { value: '2027', label: 'PhD & master intake' },
+  ]
+
   return (
     <main>
       <Header openPage={openPage} setMenuOpen={setMenuOpen} />
@@ -147,7 +154,12 @@ function App() {
           <Carousel />
 
           <section className="hero-text">
-            <h1>Chenchen Zhou</h1>
+            <p className="hero-kicker">Shanghai Jiao Tong University · Max Lab</p>
+            <h1 className="hero-title">
+              <span className="hero-line">
+                <span>Chenchen Zhou</span>
+              </span>
+            </h1>
 
             <p className="position">
               Associate Professor · PhD Supervisor
@@ -158,6 +170,24 @@ function App() {
               <br />
               Shanghai Jiao Tong University
             </p>
+
+            <div className="hero-stats">
+              {heroStats.map((s) => (
+                <div className="hero-stat" key={s.label}>
+                  <strong>{s.value}</strong>
+                  <span>{s.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="hero-actions">
+              <button type="button" className="hero-btn primary" onClick={() => openPage('publications')}>
+                Selected Publications
+              </button>
+              <button type="button" className="hero-btn ghost" onClick={() => openPage('contact')}>
+                Contact
+              </button>
+            </div>
 
             <p className="hero-brief">
               Our group works on ultraviolet/laser micro-nano fabrication, semiconductor

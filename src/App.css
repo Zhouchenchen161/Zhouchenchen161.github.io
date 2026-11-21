@@ -204,3 +204,124 @@ body::before {
   .rv { opacity: 1; }
   .rv.rv-in { animation: none; }
 }
+
+/* ===== G. 首页 Hero：分层入场 + 数据卡 + 按钮 ===== */
+.hero-text { margin: 56px auto 96px; }
+.hero-kicker {
+  color: #8b98a5;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  animation: heroRise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: 0.05s;
+}
+.hero-line { display: block; overflow: hidden; padding-bottom: 0.08em; }
+.hero-line > span {
+  display: block;
+  animation: heroMask 0.95s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: 0.12s;
+}
+.hero-text .position {
+  animation: heroRise 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: 0.34s;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  max-width: 860px;
+  margin: 40px auto 0;
+  animation: heroRise 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: 0.46s;
+}
+.hero-stat {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid #e8ecf1;
+  border-radius: 14px;
+  padding: 18px 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+  transition: translate 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.hero-stat:hover {
+  translate: 0 -4px;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.1);
+  border-color: #c41e3a;
+}
+.hero-stat strong {
+  display: block;
+  color: #c41e3a;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hero-stat span {
+  display: block;
+  margin-top: 8px;
+  color: #5b6773;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 34px;
+  animation: heroRise 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: 0.6s;
+}
+.hero-btn {
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-size: 17px;
+  transition: translate 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.hero-btn.primary {
+  color: #fff;
+  background: #c41e3a;
+  box-shadow: 0 12px 28px rgba(196, 30, 58, 0.28);
+}
+.hero-btn.primary:hover {
+  translate: 0 -3px;
+  box-shadow: 0 18px 36px rgba(196, 30, 58, 0.34);
+}
+.hero-btn.ghost {
+  color: #c41e3a;
+  background: #fff;
+  border-color: #e5cfd3;
+}
+.hero-btn.ghost:hover {
+  translate: 0 -3px;
+  border-color: #c41e3a;
+}
+.hero-text .hero-brief {
+  animation: heroRise 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: 0.7s;
+}
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroMask {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+@media (width <= 900px) {
+  .hero-stats { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .hero-stat strong { font-size: 27px; }
+  .hero-stat span { font-size: 13px; }
+  .hero-btn { padding: 12px 22px; font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-kicker,
+  .hero-line > span,
+  .hero-text .position,
+  .hero-stats,
+  .hero-actions,
+  .hero-text .hero-brief { animation: none; }
+}

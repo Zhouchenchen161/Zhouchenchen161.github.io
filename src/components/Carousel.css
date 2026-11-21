@@ -189,3 +189,71 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+/* ============ 轮播动效升级：淡入+缩放切换、进度指示、封面角标 ============ */
+.ccarousel-track { transition: transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.ccarousel-slide { opacity: 0.3; scale: 0.94; transition: opacity 0.55s ease, scale 0.55s ease; }
+.ccarousel-slide.active { opacity: 1; scale: 1; }
+
+.ccarousel-tag {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  padding: 6px 12px;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 999px;
+  background: rgba(255, 248, 225, 0.92);
+  color: #6b4a00;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.ccarousel-count {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  z-index: 2;
+  padding: 6px 12px;
+  border: 1px solid #e8ecf1;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #6b7480;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.ccarousel-dot {
+  width: 10px;
+  height: 10px;
+  background: #d5dbe2;
+  overflow: hidden;
+  transition: width 0.35s ease, background 0.35s ease;
+}
+.ccarousel-dot.active {
+  width: 46px;
+  background: #f0dfe1;
+  transform: none;
+}
+.ccarousel-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #c41e3a;
+  transform-origin: left center;
+  animation-name: ccFill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes ccFill {
+  from { scale: 0 1; }
+  to   { scale: 1 1; }
+}
+.ccarousel.paused .ccarousel-fill { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ccarousel-track { transition: none; }
+  .ccarousel-slide { opacity: 1; scale: 1; }
+  .ccarousel-fill { animation: none; scale: 1 1; }
+}

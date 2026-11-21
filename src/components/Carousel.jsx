@@ -25,16 +25,19 @@ const slides = [
     img: `${base}intro/intro4.jpg`,
     title: "Cover · Advanced Functional Materials",
     text: "Our work on micro/nanoarchitectonics of ethanol-unfolded keratin for dual-function biodegradable nonwovens was featured as the Cover of Advanced Functional Materials (2026).",
+    cover: true,
   },
   {
     img: `${base}intro/intro5.jpg`,
     title: "Cover · Advanced Energy Materials",
     text: "Our work on recyclable triboelectric nanogenerators enabled by biodegradable pollen-paper nanoarchitectonics for sustainable energy harvesting was featured as the Cover of Advanced Energy Materials (2026).",
+    cover: true,
   },
   {
     img: `${base}intro/intro6.jpg`,
     title: "Cover · Advanced Functional Materials",
     text: "Our work on microcarriers as a transformative platform for advanced drug delivery was featured as the Cover of Advanced Functional Materials (2026).",
+    cover: true,
   },
 ];
 
@@ -43,6 +46,7 @@ const AUTOPLAY_MS = 8000; // 自动播放 8 秒；改成 0 则只手动切换
 export default function Carousel() {
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState(null); // null = 关闭；= 图片地址 = 打开
+  const [paused, setPaused] = useState(false); // hover 暂停时，进度条也停住
   const timerRef = useRef(null);
 
   const startTimer = () => {
@@ -54,21 +58,26 @@ export default function Carousel() {
     }
   };
 
+  const pauseTimer = () => {
+    clearInterval(timerRef.current);
+    setPaused(true);
+  };
+
+  const resumeTimer = () => {
+    setPaused(false);
+    startTimer();
+  };
+
   useEffect(() => {
     startTimer();
     return () => clearInterval(timerRef.current);
     // eslint-disable-next-line
   }, []);
 
-  // 灯箱打开期间暂停自动播放；按 Esc 关闭灯箱
+  // 灯箱打开期间暂停自动播放（关闭键盘处理交给下面的 effect）
   useEffect(() => {
     if (lightbox) {
       clearInterval(timerRef.current);
-      const onKey = (e) => {
-        if (e.key === "Escape") setLightbox(null);
-      };
-      window.addEventListener("keydown", onKey);
-      return () => window.removeEventListener("keydown", onKey);
     } else {
       startTimer();
     }
@@ -78,19 +87,36 @@ export default function Carousel() {
   const go = (i) =>
     setIndex(((i % slides.length) + slides.length) % slides.length);
 
+  const step = (dir) =>
+    setIndex((i) => (i + dir + slides.length) % slides.length);
+
+  // 键盘：← → 翻页，Esc 关灯箱
+  useEffect(() => {
+    const onKey = (e) => {
+      if (lightbox) {
+        if (e.key === "Escape") setLightbox(null);
+        return;
+      }
+      if (e.key === "ArrowLeft") step(-1);
+      if (e.key === "ArrowRight") step(1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox]);
+
   return (
     <>
       <section
-        className="ccarousel"
-        onMouseEnter={() => clearInterval(timerRef.current)}
-        onMouseLeave={startTimer}
+        className={"ccarousel" + (paused ? " paused" : "")}
+        onMouseEnter={pauseTimer}
+        onMouseLeave={resumeTimer}
       >
         <div
           className="ccarousel-track"
           style={{ transform: "translateX(-" + index * 100 + "%)" }}
         >
           {slides.map((s, i) => (
-            <div className="ccarousel-slide" key={i}>
+            <div className={"ccarousel-slide" + (i === index ? " active" : "")} key={i}>
               <article className="ccarousel-card">
                 <div className="ccarousel-img" onClick={() => setLightbox(s.img)}>
                   <img
@@ -98,6 +124,7 @@ export default function Carousel() {
                     alt={s.title}
                     loading={i === 0 ? "eager" : "lazy"}
                   />
+                  {s.cover && <span className="ccarousel-tag">Journal Cover</span>}
                   <span className="ccarousel-zoom">⛶ Click to enlarge</span>
                 </div>
                 <div className="ccarousel-caption">
@@ -108,6 +135,10 @@ export default function Carousel() {
             </div>
           ))}
         </div>
+
+        <span className="ccarousel-count">
+          {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+        </span>
 
         <button
           className="ccarousel-btn ccarousel-prev"
@@ -131,7 +162,15 @@ export default function Carousel() {
               className={"ccarousel-dot" + (i === index ? " active" : "")}
               onClick={() => go(i)}
               aria-label={"Slide " + (i + 1)}
-            />
+            >
+              {i === index && AUTOPLAY_MS > 0 && (
+                <span
+                  key={index}
+                  className="ccarousel-fill"
+                  style={{ animationDuration: AUTOPLAY_MS + "ms" }}
+                />
+              )}
+            </button>
           ))}
         </div>
       </section>
