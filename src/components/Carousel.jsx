@@ -4,7 +4,9 @@ import "./Carousel.css";
 
 const base = import.meta.env.BASE_URL;
 
-// 六张图：intro1 微纳成形制造/光刻 · intro2 我们的工作 · intro3 硬质微粒的微纳成形制造 · intro4 角蛋白封面 · intro5 AEM封面 · intro6 微载体封面
+// 七张图：intro1 微纳成形制造/光刻 · intro2 我们的工作 · intro3 硬质微粒的微纳成形制造
+//        · news11 AM封面 · intro4 角蛋白封面 · intro5 AEM封面 · intro6 微载体封面
+// 顺序：三张研究介绍 + 四张期刊封面
 const slides = [
   {
     img: `${base}intro/intro1.jpg`, // 正方形
@@ -20,6 +22,12 @@ const slides = [
     img: `${base}intro/intro3.jpg`, // 矩形
     title: "Micro/Nano Forming of Hard Particles",
     text: "We study the micro/nano forming manufacturing of hard particles, enabling precise shaping and assembly at the micro scale.",
+  },
+  {
+    img: `${base}news/news11.jpg`,
+    title: "Cover · Advanced Materials",
+    text: "Our work on pollen-engraved dual porosity ceramic beads from liquid marbles for environmental remediation was featured as the Cover of Advanced Materials (2026).",
+    cover: true,
   },
   {
     img: `${base}intro/intro4.jpg`,
@@ -41,7 +49,7 @@ const slides = [
   },
 ];
 
-const AUTOPLAY_MS = 8000; // 自动播放 8 秒；改成 0 则只手动切换
+const AUTOPLAY_MS = 6000; // 自动播放 6 秒（共 7 张，一轮约 42 秒）；改成 0 则只手动切换
 
 export default function Carousel() {
   const [index, setIndex] = useState(0);
