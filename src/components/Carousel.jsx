@@ -30,7 +30,7 @@ const slides = [
   {
     img: `${base}intro/intro5.jpg`,
     title: "Cover · Advanced Energy Materials",
-    text: "Our work on recyclable triboelectric nanogenerators enabled by biodegradable pollen-paper nanoarchitectonics for sustainable energy harvesting was featured as the Cover of Advanced Energy Materials (2026).",
+    text: "Our work on recyclable, biodegradable pollen-paper triboelectric nanogenerators for sustainable energy harvesting was featured as the Cover of Advanced Energy Materials (2026).",
     cover: true,
   },
   {

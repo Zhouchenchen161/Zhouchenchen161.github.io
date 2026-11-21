@@ -2,11 +2,10 @@ import { useEffect, useRef } from "react"
 
 function Research() {
   const researchItems = [
-    'Ultraviolet light/laser and other additive manufacturing techniques',
-    'Semiconductor and micro-nano materials, device design, and fabrication',
-    'Biomimetic materials: synthesis, processing, and applications',
-    'Microfluidics, liquid marbles, and superhydrophobicity',
-    'Recyclable and degradable materials and ceramic material fabrication',
+    'Micro/nano forming manufacturing and advanced lithography',
+    'Multiscale metamaterial resonators',
+    'Semiconductor and microchip materials and device design and fabrication',
+    'Biomimetic materials, microfluidics, liquid marbles, superhydrophobicity, recyclable and degradable materials, and ceramic materials',
   ]
 
   const sectionRef = useRef(null)
@@ -72,7 +71,7 @@ function Research() {
         <div className="research-panel">
           <div className="research-panel-header">
             <h2>Research Interests</h2>
-            <span>05 areas</span>
+            <span>04 areas</span>
           </div>
 
           <ol className="research-list">
@@ -109,7 +108,7 @@ function Research() {
 
           <div className="application-card">
             <span>Admissions</span>
-            <strong>2027</strong>
+            <strong>2028</strong>
             <p>Ph.D. and master&apos;s applications are now open.</p>
           </div>
         </div>

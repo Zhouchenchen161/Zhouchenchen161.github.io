@@ -91,19 +91,19 @@ function App() {
 
   const people = {
     phd: [
-      { name: 'Wenying Zhou', cn: '周文英', role: 'PhD', img: base + 'photos/people/person1.jpg' },
-      { name: 'Mo Jun Hao', cn: 'Mo Jun Hao', role: 'PhD · Co-supervised', img: base + 'photos/people/person2.jpg' },
-      { name: 'Hanna Kim', cn: 'Hanna Kim', role: 'PhD · Co-supervised', img: base + 'photos/people/person3.jpg' },
-      { name: 'Dingxuan Wang', cn: '王鼎轩', role: 'PhD', img: base + 'photos/people/person11.jpg' },
+      { name: 'Wenying Zhou', cn: '周文英', role: 'PhD · 2026', img: base + 'photos/people/person1.jpg' },
+      { name: 'Mo Jun Hao', cn: 'Mo Jun Hao', role: 'PhD · Co-supervised · 2026', img: base + 'photos/people/person2.jpg' },
+      { name: 'Hanna Kim', cn: 'Hanna Kim', role: 'PhD · Co-supervised · 2025', img: base + 'photos/people/person3.jpg' },
+      { name: 'Dingxuan Wang', cn: '王鼎轩', role: 'PhD · 2027', img: base + 'photos/people/person11.jpg' },
     ],
     master: [
-      { name: 'Xinyue Zhang', cn: '张馨月', role: 'Master · Co-supervised', img: base + 'photos/people/person4.jpg' },
-      { name: 'Jiwon Lee', cn: 'Jiwon Lee', role: 'Master · Co-supervised', img: base + 'photos/people/person5.jpg' },
+      { name: 'Xinyue Zhang', cn: '张馨月', role: 'Master · Co-supervised · 2026', img: base + 'photos/people/person4.jpg' },
+      { name: 'Jiwon Lee', cn: 'Jiwon Lee', role: 'Master · Co-supervised · 2026', img: base + 'photos/people/person5.jpg' },
     ],
     undergrad: [
-      { name: 'Wenbo Li', cn: '李文博', role: 'Undergraduate', img: base + 'photos/people/person6.jpg' },
-      { name: 'SoonMin Kwon', cn: 'SoonMin Kwon', role: 'Undergraduate', img: base + 'photos/people/person7.jpg' },
-      { name: 'Tan Yi Hao', cn: 'Tan Yi Hao', role: 'Undergraduate', img: base + 'photos/people/person8.jpg' },
+      { name: 'Wenbo Li', cn: '李文博', role: 'Undergraduate · 2024', img: base + 'photos/people/person6.jpg' },
+      { name: 'SoonMin Kwon', cn: 'SoonMin Kwon', role: 'Undergraduate · 2023', img: base + 'photos/people/person7.jpg' },
+      { name: 'Tan Yi Hao', cn: 'Tan Yi Hao', role: 'Undergraduate · 2024', img: base + 'photos/people/person8.jpg' },
     ],
     assistant: [
       { name: '刘杰', cn: '刘杰', role: 'Research Assistant', img: base + 'photos/people/person9.jpg' },
@@ -139,9 +139,9 @@ function App() {
 
   const heroStats = [
     { value: '04', label: 'journal covers in 2026' },
-    { value: '05', label: 'research areas' },
+    { value: '04', label: 'research areas' },
     { value: '11', label: 'patents & applications' },
-    { value: '2027', label: 'PhD & master intake' },
+    { value: '2028', label: 'PhD & master intake' },
   ]
 
   return (
@@ -190,9 +190,10 @@ function App() {
             </div>
 
             <p className="hero-brief">
-              Our group works on ultraviolet/laser micro-nano fabrication, semiconductor
-              and micro-nano materials and devices, microfluidics, liquid marbles,
-              biomimetic and superhydrophobic surfaces, and recyclable/ceramic materials.
+              Our group works on micro/nano forming manufacturing and advanced lithography,
+              multiscale metamaterial resonators, semiconductor and microchip materials and
+              devices, and biomimetic materials, microfluidics, liquid marbles,
+              superhydrophobicity, and recyclable, degradable, and ceramic materials.
               We welcome students with backgrounds in mechanics, materials, physics,
               optics, electronics, chemistry, and computer science.
             </p>
@@ -225,7 +226,7 @@ function App() {
             <div className="about-item">
               <span className="about-year">2026 – Present</span>
               <span className="about-item-text">
-                Long-term Associate Professor, School of Mechanical Engineering, <strong>Shanghai Jiao Tong University</strong>
+                Tenure-Track Associate Professor, School of Mechanical Engineering, <strong>Shanghai Jiao Tong University</strong>
               </span>
             </div>
             <div className="about-item">
@@ -239,17 +240,17 @@ function App() {
           <div className="about-section">
             <h2>Patents and Applications</h2>
             <ol className="pub-list">
-              <li>Man Jia, Zhou Chenchen, Li Jianyong, et al. <em>Device and method for preparing porous alumina microfibers based on a microfluidic chip</em> [P]. CN113233916B, 2022-03-11.</li>
-              <li>Man Jia, Zhou Chenchen, Wu Min, et al. <em>Size-specific ceramic microparticles using a microfluidic chip, and their preparation device, method, and applications</em> [P]. CN112829038B, 2022-03-08.</li>
-              <li>Man Jia, Zhou Chenchen, Yu Haibo, et al. <em>Device, method, and applications for preparing alumina microfibers using a microfluidic chip</em> [P]. CN112408949B, 2021-12-28.</li>
-              <li>Man Jia, Zhou Chenchen, Man Luming, et al. <em>Crescent-shaped and deformed ceramic microparticles, and their preparation method, applications, and preparation device</em> [P]. CN112452251B, 2021-12-14.</li>
-              <li>Xu Liming, Zhou Chenchen, Pi Miaomiao, et al. <em>Needle-suction precision maize seed metering device</em> [P]. CN112616377B, 2021-10-12.</li>
-              <li>Man Jia, Zhou Chenchen, Man Luming, et al. <em>Device, method, and applications for preparing crescent-shaped ceramic particles based on a microfluidic chip</em> [P]. CN111978073B, 2021-07-06.</li>
+              <li>Man Jia, Zhou Chenchen, Li Jianyong, et al. <em>Device and method for preparing porous alumina microfibers based on a microfluidic chip</em> [P]. CN113233916B, 2022-03-11 (Granted invention patent).</li>
+              <li>Man Jia, Zhou Chenchen, Wu Min, et al. <em>Size-specific ceramic microparticles using a microfluidic chip, and their preparation device, method, and applications</em> [P]. CN112829038B, 2022-03-08 (Granted invention patent).</li>
+              <li>Man Jia, Zhou Chenchen, Yu Haibo, et al. <em>Device, method, and applications for preparing alumina microfibers using a microfluidic chip</em> [P]. CN112408949B, 2021-12-28 (Granted invention patent).</li>
+              <li>Man Jia, Zhou Chenchen, Man Luming, et al. <em>Crescent-shaped and deformed ceramic microparticles, and their preparation method, applications, and preparation device</em> [P]. CN112452251B, 2021-12-14 (Granted invention patent).</li>
+              <li>Xu Liming, Zhou Chenchen, Pi Miaomiao, et al. <em>Needle-suction precision maize seed metering device</em> [P]. CN112616377B, 2021-10-12 (Granted invention patent).</li>
+              <li>Man Jia, Zhou Chenchen, Man Luming, et al. <em>Device, method, and applications for preparing crescent-shaped ceramic particles based on a microfluidic chip</em> [P]. CN111978073B, 2021-07-06 (Granted invention patent).</li>
               <li>N. Cho, C. Zhou. <em>Bio-inspired tear-shaped alveolar sac model using pollen-based microspheres and dripping printing</em>. US10202502851Q, 2026. (In process)</li>
-              <li>Cui Tao, Yin Xiaowei, Zhang Dongxing, Zhou Chenchen, et al. <em>Anti-tilting spoon-type precision maize seed metering device and its seeding method</em> [P]. CN201610459068.5, 2018-02-13.</li>
-              <li>Cui Tao, Han Dandan, Yin Xiaowei, Zhang Dongxing, Zhou Chenchen, et al. <em>Airflow-assisted internal seed-filling seed metering device with adjustable nozzle and its regulation method</em> [P]. CN201610806754.5, 2018-10-23.</li>
-              <li>Zhang Dongxing, Yin Xiaowei, Han Dandan, Li Kehong, He Xiantao, Yang Li, Cui Tao, Zhou Chenchen, et al. <em>Universal profiling seeding unit and method for replacing seed metering devices of different structural types</em> [P]. CN201610361999.1, 2017-10-20.</li>
-              <li>Xu Liming, Duan Zhuangzhuang, Zhou Chenchen, et al. <em>Indoor single-plant grape disease image acquisition device</em> [P]. CN201720967371.6, 2018-04-17.</li>
+              <li>Cui Tao, Yin Xiaowei, Zhang Dongxing, Zhou Chenchen, et al. <em>Anti-tilting spoon-type precision maize seed metering device and its seeding method</em> [P]. CN201610459068.5, 2018-02-13 (Granted invention patent).</li>
+              <li>Cui Tao, Han Dandan, Yin Xiaowei, Zhang Dongxing, Zhou Chenchen, et al. <em>Airflow-assisted internal seed-filling seed metering device with adjustable nozzle and its regulation method</em> [P]. CN201610806754.5, 2018-10-23 (Granted invention patent).</li>
+              <li>Zhang Dongxing, Yin Xiaowei, Han Dandan, Li Kehong, He Xiantao, Yang Li, Cui Tao, Zhou Chenchen, et al. <em>Universal profiling seeding unit and method for replacing seed metering devices of different structural types</em> [P]. CN201610361999.1, 2017-10-20 (Granted invention patent).</li>
+              <li>Xu Liming, Duan Zhuangzhuang, Zhou Chenchen, et al. <em>Indoor single-plant grape disease image acquisition device</em> [P]. CN201720967371.6, 2018-04-17 (Granted utility model patent).</li>
             </ol>
           </div>
 
@@ -257,7 +258,8 @@ function App() {
             <h2>Other Professional Activities</h2>
             <ul className="position-list">
               <li><strong>2026 – Present</strong> · Young Editorial Board Member, <em>Nano-Micro Letters</em> · <em>The Innovation</em> · <em>Advanced Bionics</em></li>
-              <li><strong>2026 – Present</strong> · Senior Member, Chinese Society of Micro/Nano Technology</li>
+              <li><strong>2026 – Present</strong> · Fixed Member, State Key Laboratory of Micro/Nano Engineering Science</li>
+              <li><strong>2026 – Present</strong> · Senior Member, Chinese Mechanical Engineering Society · Chinese Society of Micro/Nano Technology</li>
               <li><strong>2025 – Present</strong> · Committee Member, Particle Preparation and Processing Committee, Chinese Society of Particuology</li>
               <li>Reviewer for journals including <em>Advanced Materials</em>, <em>Advanced Functional Materials</em>, <em>Applied Materials Today</em>, <em>Heliyon</em>, <em>Scientific Reports</em>, <em>Journal of Nanoparticle Research</em>, etc.</li>
             </ul>
@@ -398,10 +400,10 @@ function App() {
                 <span className="sel-badge is-cover">Advanced Energy Materials · 2026 · Cover</span>
                 <h3>
                   <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">
-                    Recyclable Triboelectric Nanogenerators Enabled by Biodegradable Pollen-Paper Nanoarchitectonics for Sustainable Energy Harvesting
+                    Recyclable, Biodegradable Pollen-Paper Triboelectric Nanogenerators for Sustainable Energy Harvesting
                   </a>
                 </h3>
-                <p className="sel-authors">C. Zhou, Z. Guo, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.J. Cho*</p>
+                <p className="sel-authors">C. Zhou†, Z. Guo†, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.-j. Cho*</p>
               </div>
             </article>
 
@@ -440,8 +442,8 @@ function App() {
               <ul className="pub-full-list">
                 <li>Z. Guo†, C. Zhou†*, H. Wang, J. Li, J. Deng, Y. Huang, X. Pu*, M. Kim*, N.-j. Cho*. <a href="https://doi.org/10.1002/adfm.79211" target="_blank" rel="noreferrer">Pollen-Derived Paper for Sustainable Droplet Energy Harvesting</a>. <em>Advanced Functional Materials</em>, e79211 (2026).</li>
                 <li>C. Zhou†*, J.H. Mo†, Z. Guo, Y. Xu, H. Kim, J. Li, M.S. Ibrahim, M. Kim, B.P. Binks, N.-j. Cho*. <a href="https://doi.org/10.1002/adma.75433" target="_blank" rel="noreferrer">Pollen-Engraved Dual Porosity Ceramic Beads from Liquid Marbles for Environmental Remediation</a>. <em>Advanced Materials</em>, e75433 (2026). Cover.</li>
-                <li>C. Zhou, Z. Guo, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.J. Cho*. <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">Recyclable Triboelectric Nanogenerators Enabled by Biodegradable Pollen-Paper Nanoarchitectonics for Sustainable Energy Harvesting</a>. <em>Advanced Energy Materials</em>, 2026. Cover.</li>
-                <li>J. Li†, C. Zhou†, J.H. Mo†, M.S. Ibrahim, J. Lee, C.H. Teo, R. Ni, H. Kim, Z. Guo, B.P. Binks, N.-j. Cho*. <a href="https://doi.org/10.1021/acssuschemeng.6c04002" target="_blank" rel="noreferrer">Engineering Tunable Biomimetic Superhydrophobic Surfaces from Natural Spiky Pollen</a>. <em>ACS Sustainable Chemistry &amp; Engineering</em>, 2026.</li>
+                <li>C. Zhou†, Z. Guo†, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.-j. Cho*. <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">Recyclable, Biodegradable Pollen-Paper Triboelectric Nanogenerators for Sustainable Energy Harvesting</a>. <em>Advanced Energy Materials</em>, 16(40) (2026) e71517. Cover.</li>
+                <li>J. Li†, C. Zhou†, J.H. Mo†, R. Ni, J. Lee, C.H. Teo, Z. Guo, H. Kim, M.S. Ibrahim, B.P. Binks, N.-j. Cho*. <a href="https://doi.org/10.1021/acssuschemeng.6c04002" target="_blank" rel="noreferrer">Engineering Tunable Biomimetic Superhydrophobic Surfaces from Natural Spiky Pollen</a>. <em>ACS Sustainable Chemistry &amp; Engineering</em>, 14(33) (2026) 14720-14732.</li>
                 <li>Z. Guo, J. Deng, Y. Xu, C. Zhou, Y. Shao, X. Pu, M. Kim*, N.-j. Cho*. <a href="https://doi.org/10.1002/advs.202521235" target="_blank" rel="noreferrer">A pollen-enhanced bionic mechanoreceptor induced by asymmetric ionic convection in hydrogel for sensory-augmented prostheses</a>. <em>Advanced Science</em>, 13 (2026) 2521235.</li>
                 <li>C. Zhou, H. Kim, J.H. Mo, J.Z. Wong, Z. Guo, R. Ni, P. Kim, M.S. Ibrahim, M.F. Abdullah, S.M. Kwon, X. Zhang, N.-j. Cho*. <a href="https://doi.org/10.1002/adfm.75781" target="_blank" rel="noreferrer">Microcarriers: A Transformative Platform for Advanced Drug Delivery</a>. <em>Advanced Functional Materials</em>, e75781 (2026). Cover.</li>
                 <li>R. Ni, Q. Deng, J. Zhang, Q. Ke, C. Zhou*, N.-j. Cho*, Y. Zhao*. <a href="https://doi.org/10.1002/adfm.202530114" target="_blank" rel="noreferrer">Micro/nanoarchitectonics of ethanol-unfolded keratin for dual-function biodegradable nonwovens</a>. <em>Advanced Functional Materials</em>, e30114 (2026). Cover.</li>
@@ -478,7 +480,7 @@ function App() {
             <div className="pub-yeargroup">
               <h3 className="pub-year">2022</h3>
               <ul className="pub-full-list">
-                <li>C. Zhou, S. Liang, Y. Li, J. Li, H. Chen*. <a href="https://doi.org/10.1021/acsami.1c21408" target="_blank" rel="noreferrer">Microfluidic assembly of micro-blocks into interlocked structures for enhanced strength and toughness</a>. <em>ACS Applied Materials &amp; Interfaces</em>, 14 (2022) 7261-7269.</li>
+                <li>C. Zhou, S. Liang, Y. Li, J. Li, H. Chen*. <a href="https://doi.org/10.1021/acsami.1c21408" target="_blank" rel="noreferrer">Microfluidic assembly of micro-blocks into interlocked structures for enhanced strength and toughness</a>. <em>ACS Applied Materials &amp; Interfaces</em>, 14 (2022) 7261-7269. Cover invitation.</li>
                 <li>C. Zhou, J. Man*, J. Li, B. Qi, Z. Hua, C. Liu, M. Zhang, J. Li. <a href="https://doi.org/10.1016/j.ceramint.2022.06.053" target="_blank" rel="noreferrer">Double UV Lights Intersection Shaping for Bowl-shaped Ceramic Microparticles Based on Microfluidics</a>. <em>Ceramics International</em>, 2022.</li>
                 <li>C. Zhou, H. Jia, S. Liang*, Y. Li, J. Li, H. Chen*. <a href="https://doi.org/10.1002/pol.20210953" target="_blank" rel="noreferrer">Tailoring 3D Shapes of Polyhedral Microparticles by Adjusting Orthogonal Projection in a Microfluidic Channel</a>. <em>Journal of Polymer Science</em>, 2022.</li>
                 <li>J. Man, L. Man, C. Zhou, et al. <a href="https://doi.org/10.3390/bios12050294" target="_blank" rel="noreferrer">A facile single-phase-fluid-driven bubble microfluidic generator for potential detection of viruses suspended in air</a>. <em>Biosensors</em>, 2022.</li>
@@ -548,8 +550,8 @@ function App() {
           <h1>Open Positions</h1>
           <p>We welcome undergraduate, master's, and Ph.D. students, as well as postdoctoral and visiting researchers.</p>
           <ul className="position-list">
-            <li>🎓 Ph.D. candidates (enrollment in 2027)</li>
-            <li>📘 Master's candidates (enrollment in 2027)</li>
+            <li>🎓 Ph.D. candidates (enrollment in 2028)</li>
+            <li>📘 Master's candidates (enrollment in 2028)</li>
             <li>🤝 Postdoctoral and visiting/exchange students (long-term, flexible)</li>
           </ul>
           <p className="contact-block">📧 Interested candidates, please email your CV and transcript to <a href="mailto:chenchen.zhou@sjtu.edu.cn" className="contact-link">chenchen.zhou@sjtu.edu.cn</a>.</p>
