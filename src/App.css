@@ -308,3 +308,117 @@ body::before {
   .hero-actions,
   .hero-text .hero-brief { animation: none; }
 }
+
+/* ===== H. Open Positions · 岗位卡 ===== */
+/* 注意：.pos-* 会被滚动揭示动画占用 translate，hover 一律用 transform */
+.pos-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 30px 0 10px;
+}
+.pos-stat {
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid #e8ecf1;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+.pos-stat strong { display: block; font-size: 26px; line-height: 1.15; color: #c41e3a; }
+.pos-stat span { font-size: 13px; color: #6b7480; }
+
+.pos-areas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px 20px;
+  margin: 16px 0 6px;
+  padding: 0;
+  list-style: none;
+}
+.pos-areas li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #f7f9fc;
+  border-left: 3px solid #c41e3a;
+  border-radius: 0 10px 10px 0;
+  font-size: 15px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.pos-areas li:hover { transform: translateX(4px); background: #fdf2f4; }
+.pos-areas li span { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: #c41e3a; }
+
+.pos-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin: 30px 0 6px;
+}
+.pos-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 22px 24px;
+  background: #fff;
+  border: 1px solid #e8ecf1;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.pos-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(196, 30, 58, 0.4);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.14);
+}
+.pos-card h3 { margin: 0; font-size: 19px; }
+.pos-card p { flex: 1; margin: 0; font-size: 14.5px; line-height: 1.65; color: #55606c; }
+.pos-tag {
+  align-self: flex-start;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(196, 30, 58, 0.08);
+  color: #a3162e;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.pos-cta {
+  align-self: flex-start;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: #17202a;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.pos-cta:hover { background: #c41e3a; transform: translateY(-2px); }
+
+.pos-note {
+  margin: 26px 0 0;
+  padding: 16px 18px;
+  background: rgba(212, 175, 55, 0.09);
+  border-left: 3px solid #d4af37;
+  border-radius: 0 12px 12px 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #4a4436;
+}
+.application-card strong { font-size: 44px; letter-spacing: -0.01em; }
+
+@media (max-width: 640px) {
+  .pos-strip { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .pos-stat strong { font-size: 21px; }
+  .pos-cards { grid-template-columns: 1fr; }
+  .pos-areas { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pos-areas li,
+  .pos-card,
+  .pos-cta { transition: none; }
+  .pos-areas li:hover,
+  .pos-card:hover,
+  .pos-cta:hover { transform: none; }
+}

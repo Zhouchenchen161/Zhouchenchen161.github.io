@@ -108,8 +108,8 @@ function Research() {
 
           <div className="application-card">
             <span>Admissions</span>
-            <strong>2028</strong>
-            <p>Ph.D. and master&apos;s applications are now open.</p>
+            <strong>2027/28</strong>
+            <p>Ph.D., master&apos;s and postdoctoral applications are now open.</p>
           </div>
         </div>
       </div>

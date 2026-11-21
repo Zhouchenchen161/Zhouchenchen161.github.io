@@ -16,6 +16,10 @@ const getPageFromHash = () => {
   return PAGES.includes(hash) ? hash : 'home'
 }
 
+// 主题带上岗位名，方便筛选申请邮件
+const applyLink = (role) =>
+  `mailto:chenchen.zhou@sjtu.edu.cn?subject=${encodeURIComponent(`${role} — Max Lab, SJTU`)}`
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [page, setPage] = useState(getPageFromHash)
@@ -27,7 +31,7 @@ function App() {
   useLayoutEffect(() => {
     const nodes = Array.from(
       document.querySelectorAll(
-        '.sel-card, .pub-full-list li, .about-item, .pub-list li, .position-list li, .person-card, .gallery-card, .news-card, .contact-block p'
+        '.sel-card, .pub-full-list li, .about-item, .pub-list li, .position-list li, .person-card, .gallery-card, .news-card, .contact-block p, .pos-card, .pos-stat, .pos-areas li'
       )
     )
     if (!nodes.length) return
@@ -141,7 +145,7 @@ function App() {
     { value: '04', label: 'journal covers in 2026' },
     { value: '04', label: 'research areas' },
     { value: '11', label: 'patents & applications' },
-    { value: '2028', label: 'PhD & master intake' },
+    { value: '2027/28', label: 'PhD & master intake' },
   ]
 
   return (
@@ -569,13 +573,102 @@ function App() {
       {page === 'positions' && (
         <section className="page-section">
           <h1>Open Positions</h1>
-          <p>We welcome undergraduate, master's, and Ph.D. students, as well as postdoctoral and visiting researchers.</p>
-          <ul className="position-list">
-            <li>🎓 Ph.D. candidates (enrollment in 2028)</li>
-            <li>📘 Master's candidates (enrollment in 2028)</li>
-            <li>🤝 Postdoctoral and visiting/exchange students (long-term, flexible)</li>
-          </ul>
-          <p className="contact-block">📧 Interested candidates, please email your CV and transcript to <a href="mailto:chenchen.zhou@sjtu.edu.cn" className="contact-link">chenchen.zhou@sjtu.edu.cn</a>.</p>
+          <p>
+            Two full-time postdoctoral positions and several research assistant positions are open now, and
+            master&apos;s and Ph.D. seats for the 2027 and 2028 intakes are available as well. Undergraduates
+            who want to start with an internship are welcome.
+          </p>
+
+          <div className="pos-strip">
+            <div className="pos-stat">
+              <strong>02</strong>
+              <span>full-time postdocs</span>
+            </div>
+            <div className="pos-stat">
+              <strong>RAs</strong>
+              <span>research assistants, several seats</span>
+            </div>
+            <div className="pos-stat">
+              <strong>2027/28</strong>
+              <span>master &amp; Ph.D. intakes</span>
+            </div>
+            <div className="pos-stat">
+              <strong>04</strong>
+              <span>research directions</span>
+            </div>
+          </div>
+
+          <h2>Research directions</h2>
+          <ol className="pos-areas">
+            <li>
+              <span>01</span>Micropillar-array metamaterials
+            </li>
+            <li>
+              <span>02</span>Key components for advanced lithography tools
+            </li>
+            <li>
+              <span>03</span>Micro/nano fabrication technology
+            </li>
+            <li>
+              <span>04</span>Bio-inspired materials, microfluidics, degradable materials
+            </li>
+          </ol>
+
+          <div className="pos-cards">
+            <article className="pos-card">
+              <span className="pos-tag">Full-time · 2 seats</span>
+              <h3>Postdoctoral researcher</h3>
+              <p>
+                A Ph.D. in mechanical engineering, optics, materials, instrumentation, chemistry, physics or a
+                related field. Hands-on work in micro/nano manufacturing, metamaterials or precision metrology
+                is a plus.
+              </p>
+              <a className="pos-cta" href={applyLink('Postdoc application')}>
+                Email your CV
+              </a>
+            </article>
+
+            <article className="pos-card">
+              <span className="pos-tag">Full-time · several seats</span>
+              <h3>Research assistant</h3>
+              <p>
+                Open to bachelor&apos;s and master&apos;s graduates. Strong hands-on ability and a willingness to
+                stay in the lab long term count for more than your transcript.
+              </p>
+              <a className="pos-cta" href={applyLink('Research assistant application')}>
+                Email your CV
+              </a>
+            </article>
+
+            <article className="pos-card">
+              <span className="pos-tag">2027 &amp; 2028 intake</span>
+              <h3>Ph.D. and master&apos;s students</h3>
+              <p>
+                Seats are open in all four directions above. Applicants from mechanics, materials, physics,
+                optics, electronics, chemistry or computer science backgrounds can apply.
+              </p>
+              <a className="pos-cta" href={applyLink('Graduate application')}>
+                Email your transcript
+              </a>
+            </article>
+
+            <article className="pos-card">
+              <span className="pos-tag">Rolling</span>
+              <h3>Undergraduate intern</h3>
+              <p>
+                Start with a summer project or a graduation thesis and decide later. Interns usually end up
+                working on one of the four directions above.
+              </p>
+              <a className="pos-cta" href={applyLink('Undergraduate internship')}>
+                Ask about a project
+              </a>
+            </article>
+          </div>
+
+          <p className="pos-note">
+            Postdocs and research assistants should generally be under 35 and able to work full time. For every
+            role, including interns, we look for people who are still a little stubborn about hard problems.
+          </p>
         </section>
       )}
 
