@@ -270,6 +270,30 @@ function App() {
 
           <div className="pub-selected">
             <article className="sel-card">
+              <span className="sel-badge">Advanced Functional Materials · 2026</span>
+              <h3>
+                <a href="https://doi.org/10.1002/adfm.79211" target="_blank" rel="noreferrer">
+                  Pollen-Derived Paper for Sustainable Droplet Energy Harvesting
+                </a>
+              </h3>
+              <p className="sel-authors">
+                Z. Guo†, C. Zhou†*, H. Wang, J. Li, J. Deng, Y. Huang, X. Pu*, M. Kim*, N.-j. Cho*
+              </p>
+            </article>
+
+            <article className="sel-card">
+              <span className="sel-badge">Advanced Materials · 2026 · Cover</span>
+              <h3>
+                <a href="https://doi.org/10.1002/adma.75433" target="_blank" rel="noreferrer">
+                  Pollen-Engraved Dual Porosity Ceramic Beads from Liquid Marbles for Environmental Remediation
+                </a>
+              </h3>
+              <p className="sel-authors">
+                C. Zhou†*, J.H. Mo†, Z. Guo, Y. Xu, H. Kim, J. Li, M.S. Ibrahim, M. Kim, B.P. Binks, N.-j. Cho*
+              </p>
+            </article>
+
+            <article className="sel-card">
               <span className="sel-badge">Advanced Energy Materials · 2026</span>
               <h3>
                 <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">
@@ -297,31 +321,6 @@ function App() {
                 </a>
               </h3>
               <p className="sel-authors">C. Zhou*, Y. Cao, C. Liu, W. Guo*</p>
-            </article>
-
-            <article className="sel-card">
-              <span className="sel-badge">Advanced Functional Materials · 2026</span>
-              <h3>
-                <a href="https://doi.org/10.1002/adfm.75781" target="_blank" rel="noreferrer">
-                  Microcarriers: A Transformative Platform for Advanced Drug Delivery
-                </a>
-              </h3>
-              <p className="sel-authors">
-                C. Zhou, H. Kim, J.H. Mo, J.Z. Wong, Z. Guo, R. Ni, P. Kim, M.S. Ibrahim,
-                M.F. Abdullah, S.M. Kwon, X. Zhang, N.-j. Cho*
-              </p>
-            </article>
-
-            <article className="sel-card">
-              <span className="sel-badge">Annual Review of Chemical and Biomolecular Engineering · 2024</span>
-              <h3>
-                <a href="https://doi.org/10.1146/annurev-chembioeng-101121-085959" target="_blank" rel="noreferrer">
-                  Multifunctional Material Building Blocks from Plant Pollen
-                </a>
-              </h3>
-              <p className="sel-authors">
-                C. Zhou, J. Deng, T.J. Hao, S. Basu, J. Yang, J. Li, C. Yang, Z. Zhao*, N.-j. Cho*
-              </p>
             </article>
           </div>
 
