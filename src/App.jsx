@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 import './App.css'
 import Carousel from './components/Carousel'
@@ -21,6 +21,55 @@ function App() {
   const [page, setPage] = useState(getPageFromHash)
   const [peopleTab, setPeopleTab] = useState('phd')
   const [galleryTab, setGalleryTab] = useState('academic')
+  const [coverZoom, setCoverZoom] = useState(null)
+
+  // 滚动淡入：进入视口才显示，同一组内依次错开
+  useLayoutEffect(() => {
+    const nodes = Array.from(
+      document.querySelectorAll(
+        '.sel-card, .pub-full-list li, .about-item, .pub-list li, .position-list li, .person-card, .gallery-card, .news-card, .contact-block p, .hero-text'
+      )
+    )
+    if (!nodes.length) return
+
+    const revealNow = () => nodes.forEach((n) => n.classList.add('rv-in'))
+    if (!('IntersectionObserver' in window) || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+      revealNow()
+      return
+    }
+
+    const orderByParent = new Map()
+    nodes.forEach((node) => {
+      const i = orderByParent.get(node.parentElement) || 0
+      orderByParent.set(node.parentElement, i + 1)
+      node.style.setProperty('--d', Math.min(i, 7) * 0.07 + 's')
+      node.classList.add('rv')
+    })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('rv-in')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    )
+    nodes.forEach((node) => observer.observe(node))
+    return () => observer.disconnect()
+  }, [page, peopleTab, galleryTab])
+
+  // 封面灯箱：Esc 关闭
+  useEffect(() => {
+    if (!coverZoom) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setCoverZoom(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [coverZoom])
 
   // 浏览器前进/后退/直接输入网址时，跟着地址栏切页
   useEffect(() => {
@@ -270,57 +319,86 @@ function App() {
 
           <div className="pub-selected">
             <article className="sel-card">
-              <span className="sel-badge">Advanced Functional Materials · 2026</span>
-              <h3>
-                <a href="https://doi.org/10.1002/adfm.79211" target="_blank" rel="noreferrer">
-                  Pollen-Derived Paper for Sustainable Droplet Energy Harvesting
-                </a>
-              </h3>
-              <p className="sel-authors">
-                Z. Guo†, C. Zhou†*, H. Wang, J. Li, J. Deng, Y. Huang, X. Pu*, M. Kim*, N.-j. Cho*
-              </p>
+              <span className="sel-mark">AFM</span>
+              <div className="sel-body">
+                <span className="sel-badge">Advanced Functional Materials · 2026</span>
+                <h3>
+                  <a href="https://doi.org/10.1002/adfm.79211" target="_blank" rel="noreferrer">
+                    Pollen-Derived Paper for Sustainable Droplet Energy Harvesting
+                  </a>
+                </h3>
+                <p className="sel-authors">
+                  Z. Guo†, C. Zhou†*, H. Wang, J. Li, J. Deng, Y. Huang, X. Pu*, M. Kim*, N.-j. Cho*
+                </p>
+              </div>
             </article>
 
             <article className="sel-card">
-              <span className="sel-badge">Advanced Materials · 2026 · Cover</span>
-              <h3>
-                <a href="https://doi.org/10.1002/adma.75433" target="_blank" rel="noreferrer">
-                  Pollen-Engraved Dual Porosity Ceramic Beads from Liquid Marbles for Environmental Remediation
-                </a>
-              </h3>
-              <p className="sel-authors">
-                C. Zhou†*, J.H. Mo†, Z. Guo, Y. Xu, H. Kim, J. Li, M.S. Ibrahim, M. Kim, B.P. Binks, N.-j. Cho*
-              </p>
+              <button
+                type="button"
+                className="sel-cover"
+                onClick={() => setCoverZoom(base + 'news/news11.jpg')}
+                aria-label="Enlarge the Advanced Materials cover"
+              >
+                <img src={base + 'news/news11.jpg'} alt="Advanced Materials cover" loading="lazy" decoding="async" />
+              </button>
+              <div className="sel-body">
+                <span className="sel-badge is-cover">Advanced Materials · 2026 · Cover</span>
+                <h3>
+                  <a href="https://doi.org/10.1002/adma.75433" target="_blank" rel="noreferrer">
+                    Pollen-Engraved Dual Porosity Ceramic Beads from Liquid Marbles for Environmental Remediation
+                  </a>
+                </h3>
+                <p className="sel-authors">
+                  C. Zhou†*, J.H. Mo†, Z. Guo, Y. Xu, H. Kim, J. Li, M.S. Ibrahim, M. Kim, B.P. Binks, N.-j. Cho*
+                </p>
+              </div>
             </article>
 
             <article className="sel-card">
-              <span className="sel-badge">Advanced Energy Materials · 2026</span>
-              <h3>
-                <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">
-                  Recyclable Triboelectric Nanogenerators Enabled by Biodegradable Pollen-Paper Nanoarchitectonics for Sustainable Energy Harvesting
-                </a>
-              </h3>
-              <p className="sel-authors">C. Zhou, Z. Guo, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.J. Cho*</p>
+              <button
+                type="button"
+                className="sel-cover"
+                onClick={() => setCoverZoom(base + 'intro/intro5.jpg')}
+                aria-label="Enlarge the Advanced Energy Materials cover"
+              >
+                <img src={base + 'intro/intro5.jpg'} alt="Advanced Energy Materials cover" loading="lazy" decoding="async" />
+              </button>
+              <div className="sel-body">
+                <span className="sel-badge is-cover">Advanced Energy Materials · 2026 · Cover</span>
+                <h3>
+                  <a href="https://doi.org/10.1002/aenm.71517" target="_blank" rel="noreferrer">
+                    Recyclable Triboelectric Nanogenerators Enabled by Biodegradable Pollen-Paper Nanoarchitectonics for Sustainable Energy Harvesting
+                  </a>
+                </h3>
+                <p className="sel-authors">C. Zhou, Z. Guo, J.H. Mo, L. Yang, H. Wang, D.S.B. Anugrah, M. Kim*, D. Sun*, N.J. Cho*</p>
+              </div>
             </article>
 
             <article className="sel-card">
-              <span className="sel-badge">Nature Communications · 2024</span>
-              <h3>
-                <a href="https://doi.org/10.1038/s41467-024-53016-8" target="_blank" rel="noreferrer">
-                  One-pot microfluidic fabrication of micro ceramic particles
-                </a>
-              </h3>
-              <p className="sel-authors">C. Zhou, S. Liang, B. Qi, C. Liu, N.-j. Cho*</p>
+              <span className="sel-mark">NC</span>
+              <div className="sel-body">
+                <span className="sel-badge">Nature Communications · 2024</span>
+                <h3>
+                  <a href="https://doi.org/10.1038/s41467-024-53016-8" target="_blank" rel="noreferrer">
+                    One-pot microfluidic fabrication of micro ceramic particles
+                  </a>
+                </h3>
+                <p className="sel-authors">C. Zhou, S. Liang, B. Qi, C. Liu, N.-j. Cho*</p>
+              </div>
             </article>
 
             <article className="sel-card">
-              <span className="sel-badge">Materials Today · 2023</span>
-              <h3>
-                <a href="https://doi.org/10.1016/j.mattod.2023.05.009" target="_blank" rel="noreferrer">
-                  Microparticles by microfluidic lithography
-                </a>
-              </h3>
-              <p className="sel-authors">C. Zhou*, Y. Cao, C. Liu, W. Guo*</p>
+              <span className="sel-mark">MT</span>
+              <div className="sel-body">
+                <span className="sel-badge">Materials Today · 2023</span>
+                <h3>
+                  <a href="https://doi.org/10.1016/j.mattod.2023.05.009" target="_blank" rel="noreferrer">
+                    Microparticles by microfluidic lithography
+                  </a>
+                </h3>
+                <p className="sel-authors">C. Zhou*, Y. Cao, C. Liu, W. Guo*</p>
+              </div>
             </article>
           </div>
 
@@ -458,6 +536,14 @@ function App() {
             <p>📍 <strong>Address:</strong> <a href="https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6%E9%97%B5%E8%A1%8C%E6%A0%A1%E5%8C%BA" target="_blank" rel="noreferrer" className="contact-link">Room A732, School of Mechanical Engineering, Shanghai Jiao Tong University, 800 Dongchuan Road, Minhang District, Shanghai, China</a></p>
           </div>
         </section>
+      )}
+      {coverZoom && (
+        <div className="sel-lightbox" onClick={() => setCoverZoom(null)}>
+          <img src={coverZoom} alt="Journal cover, enlarged" />
+          <button type="button" className="lightbox-close" onClick={() => setCoverZoom(null)} aria-label="Close">
+            ✕
+          </button>
+        </div>
       )}
     </main>
   )
