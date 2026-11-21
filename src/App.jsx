@@ -351,7 +351,14 @@ function App() {
 
           <div className="pub-selected">
             <article className="sel-card">
-              <span className="sel-mark">AFM</span>
+              <button
+                type="button"
+                className="sel-cover is-figure"
+                onClick={() => setCoverZoom(base + 'covers/afm-pollen-paper.jpg')}
+                aria-label="Enlarge the Advanced Functional Materials figure"
+              >
+                <img src={base + 'covers/afm-pollen-paper.jpg'} alt="Advanced Functional Materials graphical abstract" loading="lazy" decoding="async" />
+              </button>
               <div className="sel-body">
                 <span className="sel-badge">Advanced Functional Materials · 2026</span>
                 <h3>
@@ -408,7 +415,14 @@ function App() {
             </article>
 
             <article className="sel-card">
-              <span className="sel-mark">NC</span>
+              <button
+                type="button"
+                className="sel-cover is-figure"
+                onClick={() => setCoverZoom(base + 'covers/nc-ceramic.jpg')}
+                aria-label="Enlarge the Nature Communications figure"
+              >
+                <img src={base + 'covers/nc-ceramic.jpg'} alt="Nature Communications graphical abstract" loading="lazy" decoding="async" />
+              </button>
               <div className="sel-body">
                 <span className="sel-badge">Nature Communications · 2024</span>
                 <h3>
@@ -421,7 +435,14 @@ function App() {
             </article>
 
             <article className="sel-card">
-              <span className="sel-mark">MT</span>
+              <button
+                type="button"
+                className="sel-cover is-figure"
+                onClick={() => setCoverZoom(base + 'covers/mt-lithography.webp')}
+                aria-label="Enlarge the Materials Today figure"
+              >
+                <img src={base + 'covers/mt-lithography.webp'} alt="Materials Today graphical abstract" loading="lazy" decoding="async" />
+              </button>
               <div className="sel-body">
                 <span className="sel-badge">Materials Today · 2023</span>
                 <h3>
