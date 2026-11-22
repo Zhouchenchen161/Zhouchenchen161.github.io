@@ -358,7 +358,7 @@ function App() {
               <button
                 type="button"
                 className="sel-cover is-figure"
-                onClick={() => setCoverZoom(base + 'covers/afm-pollen-paper.jpg')}
+                onClick={() => setCoverZoom({ src: base + 'covers/afm-pollen-paper.jpg', alt: 'Advanced Functional Materials graphical abstract' })}
                 aria-label="Enlarge the Advanced Functional Materials figure"
               >
                 <img src={base + 'covers/afm-pollen-paper.jpg'} alt="Advanced Functional Materials graphical abstract" loading="lazy" decoding="async" />
@@ -380,7 +380,7 @@ function App() {
               <button
                 type="button"
                 className="sel-cover"
-                onClick={() => setCoverZoom(base + 'news/news11.jpg')}
+                onClick={() => setCoverZoom({ src: base + 'news/news11.jpg', alt: 'Advanced Materials cover' })}
                 aria-label="Enlarge the Advanced Materials cover"
               >
                 <img src={base + 'news/news11.jpg'} alt="Advanced Materials cover" loading="lazy" decoding="async" />
@@ -402,7 +402,7 @@ function App() {
               <button
                 type="button"
                 className="sel-cover"
-                onClick={() => setCoverZoom(base + 'intro/intro5.jpg')}
+                onClick={() => setCoverZoom({ src: base + 'intro/intro5.jpg', alt: 'Advanced Energy Materials cover' })}
                 aria-label="Enlarge the Advanced Energy Materials cover"
               >
                 <img src={base + 'intro/intro5.jpg'} alt="Advanced Energy Materials cover" loading="lazy" decoding="async" />
@@ -422,7 +422,7 @@ function App() {
               <button
                 type="button"
                 className="sel-cover is-figure"
-                onClick={() => setCoverZoom(base + 'covers/nc-ceramic.jpg')}
+                onClick={() => setCoverZoom({ src: base + 'covers/nc-ceramic.jpg', alt: 'Nature Communications graphical abstract' })}
                 aria-label="Enlarge the Nature Communications figure"
               >
                 <img src={base + 'covers/nc-ceramic.jpg'} alt="Nature Communications graphical abstract" loading="lazy" decoding="async" />
@@ -442,7 +442,7 @@ function App() {
               <button
                 type="button"
                 className="sel-cover is-figure"
-                onClick={() => setCoverZoom(base + 'covers/mt-lithography.webp')}
+                onClick={() => setCoverZoom({ src: base + 'covers/mt-lithography.webp', alt: 'Materials Today graphical abstract' })}
                 aria-label="Enlarge the Materials Today figure"
               >
                 <img src={base + 'covers/mt-lithography.webp'} alt="Materials Today graphical abstract" loading="lazy" decoding="async" />
@@ -562,7 +562,14 @@ function App() {
           <div className="gallery-grid">
             {gallery[galleryTab].map((item) => (
               <figure className="gallery-card" key={item.img}>
-                <img src={base + item.img} alt={item.cap} className="gallery-photo" loading="lazy" decoding="async" />
+                <button
+                  type="button"
+                  className="gallery-open"
+                  onClick={() => setCoverZoom({ src: base + item.img, alt: item.cap })}
+                  aria-label={`Enlarge photo: ${item.cap}`}
+                >
+                  <img src={base + item.img} alt={item.cap} className="gallery-photo" loading="lazy" decoding="async" />
+                </button>
                 <figcaption className="gallery-caption">{item.cap}</figcaption>
               </figure>
             ))}
@@ -685,7 +692,7 @@ function App() {
       )}
       {coverZoom && (
         <div className="sel-lightbox" onClick={() => setCoverZoom(null)}>
-          <img src={coverZoom} alt="Journal cover, enlarged" />
+          <img src={coverZoom.src} alt={coverZoom.alt} />
           <button type="button" className="lightbox-close" onClick={() => setCoverZoom(null)} aria-label="Close">
             ✕
           </button>

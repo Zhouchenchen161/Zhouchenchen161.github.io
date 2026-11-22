@@ -422,3 +422,59 @@ body::before {
   .pos-card:hover,
   .pos-cta:hover { transform: none; }
 }
+
+/* ===== I. Gallery · 瀑布流 + 点击放大 ===== */
+/* 压缩行里 .gallery-grid 定义了两遍且把图片写死成 220px 高，合影会被裁掉人头 */
+.gallery-grid {
+  display: block;
+  columns: 3;
+  column-gap: 20px;
+  margin-top: 26px;
+}
+.gallery-grid .gallery-card {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin: 0 0 20px;
+}
+.gallery-grid img {
+  height: auto;
+  object-fit: initial;
+  border-radius: 0;
+}
+.gallery-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+}
+.gallery-photo { transition: scale 0.45s ease; }
+.gallery-card:hover .gallery-photo { scale: 1.04; }
+.gallery-caption {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.gallery-card:hover .gallery-caption,
+.gallery-card:focus-within .gallery-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sel-lightbox img { max-width: min(92vw, 1080px); }
+
+@media (max-width: 900px) {
+  .gallery-grid { columns: 2; }
+}
+@media (max-width: 600px) {
+  .gallery-grid { columns: 1; }
+}
+@media (hover: none), (max-width: 600px) {
+  .gallery-caption { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-photo,
+  .gallery-caption { transition: none; }
+  .gallery-card:hover .gallery-photo { scale: none; }
+  .gallery-caption { opacity: 1; transform: none; }
+}
